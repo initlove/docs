@@ -1,0 +1,180 @@
+Part One:
+1. gui platform for linux
+   windows? gtk is ok, but not sure about dbus 
+
+2. what should a gui platform provide
+
+    mvc 
+   
+Model -  libgnome*  !libgnomeui*
+
+    file operation, local file, http, ftp files..  gnome-vfs  -> gvfs
+    system infos: TODO: libhwinfo?
+    icon/desktop/configs/gconfs : libgnome-vfs -> glib
+            --  freedesktop part
+        config format:  key,   most apps, key = value
+        xml:    gconf, glade
+        json:   clutter script description
+        binary: dconf
+
+
+    gnome innovation on model:
+        de-gnomelize. mv libgnome to glib
+
+Visual -  gtk libgnomeui clutter
+    
+    gnome innovation on visual:
+        mv libgnomeui to gtk
+            if it is useful, should be in gtk
+            if it is just used in serveral apps, drop it
+
+    gtk Vs clutter
+
+    glade 
+    gtk-theme
+
+Control - Inside a process:
+            event driven  (gtk clutter)
+        bettween processes:
+            corba (depressed)
+            dbus    
+            gconf(TODO: what is it choose)
+        
+3. gobject
+    most lauages supprted
+
+Part Two:
+Component
+var component_list = [];
+var application_list = [];
+1. What happes after press 'start'
+   systemd
+   init 5 -- going to have X
+
+2.  X, concept of display, screen, toolkit
+   X server 
+        1) remote desktop, 
+            x forward -- M + C
+            rdp/vnc -- M + V + C
+           webos -- M + C + V
+
+        2) important concepts:
+           display manager / window manager
+
+    var display_manager;
+    var window_manager;
+    component_list = [display_manager, window_manager];
+
+   display_manager 
+    responsibility:
+        malloc and distribute the display resource
+
+    var display_task = {
+                'name': 'manage the display resource',
+                'description': 'malloc, distribute display resource',
+                'url': null,
+                'app': 'gdm'};
+    display_manager.tasks = [display_task];
+ 
+what the computer have:
+    1). root access
+    2). network
+    3). a way to start X server
+what do we have: nothing.
+what are we going to do:
+    A display manage.
+    using this display manager,we can access the computer.
+    As linux is a multi-user system, so another basic requirement is:
+        we can different with other user
+what is the way to choose display manage:
+    /etc/systemconfig/displaymanager
+        in gnome, we set it to gdm
+        in kde, we set it to kdm.
+
+3, display manager
+login component
+    user: local user, remote user (samba, ldap)
+    VIP: online user? mobile number user?
+    implement in display manage GDM.
+    security:
+        login ui - different process - auth daemon
+        with only supported api calls (dbus)
+    auth mechanism:
+        pam modules
+        -- how to write a pam modules
+        -- how to add remote or online user modules 
+
+    autologin
+    finger-print/ face and the etc..
+
+    take samba user for example
+    
+    After login, we get the access.
+    Yes, we put it in one component: session
+what is the way to choose session.
+    in gdm, choose the dropdown box, ~/.bashrc, default one 
+3. session
+    after you login, before you logout, we call it session. (gnome-session)
+    session aims to keep track on all changes of the bettween effects.
+
+    so: what we see when we login to the system is provided by session(gnome-session)
+    since session, the system is now grant the access to the user.
+
+    saved session -- seldom used because of the advanced work.
+        hiberate, vm snapshot, and not all the most important reason: not all gnome
+    
+    scripts:  pre/post script (TODO: user one?, what must be call?)
+        default daemons: route role
+        default apps:
+        using this, we can do what ever to manage our data.
+  
+    Yes, we can think this as our HOMEPAGE
+
+what is the way to choose window manager in gnome-session
+
+4. window manager
+    design our HOMEPAGE on desktop
+    
+    1) initial component
+        panel: always on top of the screen. (split the screen, take part of it)
+        file-manager & app-manager.
+            in the old time, we have files, then we click on it (mimetype) to start application.
+            in the fasion time, we have apps, we use app to manage files
+        system-manager: network, package, user, hardware ..
+    2) default behavior to switch between apps
+        alt-tab, the way to hide/show/move/resize component/apps
+        --- the default defination of window manager, but to make the default behavior usability better
+            we should use our initial component.
+            so now, the window manager have 1) and 2)
+    
+
+        screensaver: the history reason?
+
+    gnome-2.0: metacity + gnome-panel + nautilus
+    gnome-3.0: gnome-shell
+
+    xface and the light window manager
+    
+Part Three: Welcome Web
+1.Online Account
+2.Ekiga
+3.my web widgets
+4.librest, soup and other libs
+the coming GUADIC
+
+Part Four: Platforms
+1. KDE
+2. Unity
+3. Andriod
+
+
+Part 10. Talks
+1. controversal apps
+In maths,数论 there is a word, the result is not the most important, the procedure of solving it,
+        the theoies discovered to solve it the most beatful part.
+This can be used to describe evolution, nautilus.
+    1). evolution
+        the best gnome application but have the worst reputation.
+    2). nautilus
+        lots of complain and bugs, just because we used a lot.
+

@@ -1,0 +1,5 @@
+User:
+    use admin;
+    db.addUser ("username", "password");
+    db.auth ("username", "password");
+    db.removeUser ("usernmae");
