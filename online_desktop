@@ -1,0 +1,22 @@
+based on ocs.
+
+1. gdm  pam module 
+
+    hostname, user , password
+
+    return meta info to the login label.
+
+2. after login, 
+    keep the user name and password to 'session'
+
+3. the user have the nature friends, connector, activity from ocs server.
+    post info publicly ---  the top right position, new entry.
+
+    keep note personly --- should be the 'window manage work'
+
+    the friends should be in pidgin plugin.
+
+4.  S3? 
+    user has his online disk like dropbox.
+    It is the home directory for him.
+    remember: special config file to make white/black list

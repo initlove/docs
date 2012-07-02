@@ -5,23 +5,87 @@ Part One:
 2. what should a gui platform provide
 
     mvc 
-   
-Model -  libgnome*  !libgnomeui*
+ 
+gnome-2.0 MVC
+1. Micro Picture -- app
+    M
+        document
+    V
+        gtk/clutter
+    C
+        libs
 
-    file operation, local file, http, ftp files..  gnome-vfs  -> gvfs
-    system infos: TODO: libhwinfo?
-    icon/desktop/configs/gconfs : libgnome-vfs -> glib
-            --  freedesktop part
-        config format:  key,   most apps, key = value
-        xml:    gconf, glade
-        json:   clutter script description
-        binary: dconf
+2. Large Picture -- whole system
+    M
+        documents
+            abstract layer: gnome-vfs2: local file, ftp, smb, webdav...
+    V
+        app
+            display files
+    C
+        file-manager
+            mime-type
+    
+    short of
+    1. rich file type
+        1) email
+        2) http
+    2. communications
+    2. system config
+
+    extra MVC
+    M 
+        app
+    V
+        app view  
+    C
+        menu
+        file-manager
+        panel..
+  
+    two threads:
+        1.  documents
+        2.  apps
 
 
-    gnome innovation on model:
-        de-gnomelize. mv libgnome to glib
+    duplicate, over covers
 
-Visual -  gtk libgnomeui clutter
+gnome-3.0
+    M
+        app
+    V
+    C
+        window-manager        
+
+Model - 
+    The way to operate data. 
+    history:
+        libgnome*, gnome-vfs(2)
+
+    content data:
+        protocols:
+            ftp, smb, webdav, .. 
+        standards:  (free software)
+            desktop, menu, icon, mimetype
+
+    config data:
+        common interface for developers:
+            1) key-value
+            2) xml
+            3) json
+            4) binary
+                config format:  key,   most apps, key = value
+                xml:    gconf, glade
+                json:   clutter script description
+                binary: dconf
+
+    system info:
+        1) hardware info
+        2) packages info
+
+
+
+Visual -  gtk libgnomeui clutter webkit
     
     gnome innovation on visual:
         mv libgnomeui to gtk
@@ -33,12 +97,16 @@ Visual -  gtk libgnomeui clutter
     glade 
     gtk-theme
 
-Control - Inside a process:
+Control -
+    the libs to operate on Model
+    
+         Inside a process:
             event driven  (gtk clutter)
         bettween processes:
             corba (depressed)
             dbus    
             gconf(TODO: what is it choose)
+        gsetting
         
 3. gobject
     most lauages supprted
