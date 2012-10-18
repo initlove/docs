@@ -1,0 +1,11 @@
+/** A pointer to this routine is passed to low-level input drivers so
+ * that all special keychecking is unified to this file.  This function
+ * returns 0 if no special keys have been pressed.  If the user has
+ * requested termination of the DMX server, -1 is returned.  If the user
+ * has requested a switch to a VT, then the (1-based) number of that VT
+ * is returned. */
+int dmxCheckSpecialKeys(DevicePtr pDev, KeySym keySym)
+
+
+
+--  switch to Vt and the backspace delete was done here
