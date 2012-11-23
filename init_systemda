@@ -1,0 +1,56 @@
+kernel boot
+the first process
+
+http://en.wikipedia.org/wiki/Init
+init
+
+
+/etc/inittab
+
+runlevel 
+ 0  3 5 6
+
+id:3:initdefault:
+
+
+boot with runlevel
+grub:> ****  append number 
+
+
+
+how to add service in runlevel
+some specs:
+1. start stop ..
+demo:  /etc/init.d/skeleton
+
+2. seqence
+   start with number
+
+   (dependency)
+   ssh depend on network..
+    ### BEGIN INIT INFO
+    # Provides:          FOO
+    # Required-Start:    $syslog $remote_fs
+    # Should-Start: $time ypbind sendmail
+    # Required-Stop:     $syslog $remote_fs
+    # Should-Stop: $time ypbind sendmail
+    # Default-Start:     3 5
+    # Default-Stop:      0 1 2 6
+    # Short-Description: FOO XYZ daemon providing ZYX
+
+question? who in charge of the seqence: insserv
+    link in rc%d.d will be generated automatically
+
+ http://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros#.25fillup_and_insserv
+
+%fillup_and_insserv
+/* example in sshd
+%post
+%{fillup_and_insserv -n ssh sshd}
+*/
+ 
+
+most issue:  
+Traditionally, one of the major drawbacks of init is that it starts tasks serially, waiting for each to finish loading before moving on to the next. When startup processes end up I/O blocked, this can result in long delays during boot.
+
+-- systemd
