@@ -1,0 +1,4 @@
+in package spec
+Provide: locale (zh_CN)
+
+if the zh_CN is written, we could find this package in the Language:Chinese Simplified list
