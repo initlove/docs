@@ -1,0 +1,44 @@
+1. introduction - mate-desktop.org 
+   The MATE project was introduced by the video(slide) clearly.
+   Part of its roadmap: support gtk3/wayland/systemd and remove useless fork.
+2. en.opensuse.org/Portal:MATE
+3. Core components and the core components in gnome2.
+   mate = macro + cala + mate-session + mate-setting-daemon + mate-panel + others
+   macro is the fork of metacity. metacity is dropped in gnome3.
+   cala is the fork of nautlus. nautilus is still alive in gnome3.
+   mate-session is not the fork of gnome-session, but the structure and codes are similiar.
+        gnome-session is still alive in gnome3.
+   mate-setting-daemon is the fork of gnome-setting-daemon. gnome-setting-daemon is still alive in gnome3.
+   mate-panel is the fork of gnome-panel. gnome-panel is dropped in gnome3.
+-----------------------------------
+
+gnome2, gnome-fallback, gnome-flashback.
+
+In some low resource machines or for the users who don't want to waste resources on rendering,
+   gnome3 is not the choice.
+(Users in favor of gnome2 user experience could use 'classic mode', that is another thing.)
+Currently, we have gnome2-libs, gnome2-components, gnome3-libs, gnome3-components.
+
+gnome2 : some of gnome2-libs and gnome2-components are no longer supported by upstream.
+    (gnome-vfs2, metacity, gnome-panel ..)
+
+gnome-fallback: removed because upstream don't want to maintain two desktops.
+
+gnome-flashback is coming.
+    https://mail.gnome.org/archives/gnome-flashback-list/2013-April/msg00001.html
+    It seems they plan to migrate gnome2-libs to gnome3-libs in gnome2-components,
+    so at the end of the day, we will  have a gnome2 desktop and a gnome3 desktop sharing with one batch of libs.
+    And they already make some works!
+    It is same with MATE's roadmap.
+
+-------------------------
+
+
+xfce
+1. The UI and the code base are different with gnome2/gnome3.
+2. openSUSE:Factory. zypper in xfce
+3. good community.
+   40 submitters in xfce4-panel from 2013. It has more submitters than other xfce4-* components.
+   I did not calculate the whole submitters, I guess in the whole xfce project, the number will be bigger.
+4. written in c, depend on gtk2.
+
